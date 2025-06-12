@@ -1,22 +1,18 @@
 const express = require('express');
+const { getUsers, createUser, updateUser, deleteUser, loginUser } = require('../controllers/userController');
+
 const router = express.Router();
 
-// Simple test route
+// Test route (keep for debugging)
 router.get('/test', (req, res) => {
   res.json({ message: 'User routes working!' });
 });
 
-// Basic routes without complex patterns
-router.get('/', (req, res) => {
-  res.json({ message: 'Get all users - placeholder' });
-});
-
-router.post('/', (req, res) => {
-  res.json({ message: 'Create user - placeholder' });
-});
-
-router.post('/login', (req, res) => {
-  res.json({ message: 'Login - placeholder' });
-});
+// Real user routes
+router.get('/', getUsers);
+router.post('/', createUser);
+router.put('/:id', updateUser);
+router.delete('/:id', deleteUser);
+router.post('/login', loginUser);
 
 module.exports = router;
