@@ -13,27 +13,24 @@ const {
 
 const router = express.Router();
 
-
+// Put specific routes BEFORE parameterized routes
 router.get('/', getAllArticles);
 router.get('/published', getPublishedArticles);
 router.get('/search', searchArticles);
 
-
+// Debug route
 router.get('/debug-published', async (req, res) => {
   try {
     const Article = require('../models/Article');
     
     console.log('🔍 Debug route called');
     
-    // Get all articles
     const all = await Article.find();
     console.log(`📊 Total articles in DB: ${all.length}`);
     
-    // Get published articles
     const published = await Article.find({ status: 'Published' });
     console.log(`✅ Published articles found: ${published.length}`);
     
-    // Log each article's status for debugging
     all.forEach(article => {
       console.log(`- "${article.title}": status = "${article.status}" (type: ${typeof article.status})`);
     });
