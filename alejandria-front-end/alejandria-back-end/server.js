@@ -19,31 +19,27 @@ connectDB();
 app.use(express.json());
 app.use(jsonParser);
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
 
-// Fix CORS errors
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
-  );
-  next();
-});
+// Updated CORS for production
+app.use(cors({
+  origin: [
+    'http://localhost:5175',
+    'https://alejandria-frontend3.onrender.com' // Your frontend URL
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
+}));
 
 // API Routes
 app.use('/api/users', userRoutes);
-app.use('/api/articles', articleRoutes); // ✅ Added this line
+app.use('/api/articles', articleRoutes);
 
-// Serve Frontend (for production build)
+// Serve Frontend (for production build) - UPDATED PATH
 if (process.env.NODE_ENV === "production") {
-  const root = path.join(__dirname, '../robles-front-end/dist');
+  const root = path.join(__dirname, '../dist'); // Fixed path for your structure
   app.use(express.static(root));
-  app.all('/*any', (req, res, next) => {
+  app.get('*', (req, res) => { // Fixed from app.all to app.get
     res.sendFile(path.join(root, 'index.html'));
   });
 }
