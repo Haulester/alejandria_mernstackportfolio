@@ -6,9 +6,9 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const connectDB = require('./config/db');
 
-// Routes
-const userRoutes = require('./routes/userRoutes');
-const articleRoutes = require('./routes/articleRoutes'); 
+// Routes - COMMENTED OUT FOR DEBUGGING
+// const userRoutes = require('./routes/userRoutes');
+// const articleRoutes = require('./routes/articleRoutes'); 
 
 const app = express();
 
@@ -31,15 +31,19 @@ app.use(cors({
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
 }));
 
-// API Routes
-app.use('/api/users', userRoutes);
-app.use('/api/articles', articleRoutes);
+// API Routes - COMMENTED OUT FOR DEBUGGING
+// app.use('/api/users', userRoutes);
+// app.use('/api/articles', articleRoutes);
+
+// Test route
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'Server is working!' });
+});
 
 // Serve Frontend (for production build)
 if (process.env.NODE_ENV === "production") {
   const root = path.join(__dirname, '../dist');
   app.use(express.static(root));
-  // FIXED: Remove the problematic route
   app.get('*', (req, res) => {
     res.sendFile(path.join(root, 'index.html'));
   });
