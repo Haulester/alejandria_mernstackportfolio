@@ -1,22 +1,36 @@
 const express = require('express');
+const {
+  getAllArticles,
+  getPublishedArticles,
+  getArticleById,
+  getArticleByName,
+  addArticle,
+  updateArticle,
+  deleteArticle,
+  incrementArticleViews,
+  searchArticles
+} = require('../controllers/articleController');
+
 const router = express.Router();
 
-// Simple test route
+// Test route (keep for debugging)
 router.get('/test', (req, res) => {
   res.json({ message: 'Article routes working!' });
 });
 
-// Basic routes without complex patterns
-router.get('/', (req, res) => {
-  res.json({ message: 'Get all articles - placeholder' });
-});
+// Specific routes FIRST (before parameterized routes)
+router.get('/', getAllArticles);
+router.get('/published', getPublishedArticles);
+router.get('/search', searchArticles);
 
-router.get('/published', (req, res) => {
-  res.json({ message: 'Get published articles - placeholder' });
-});
+// Parameterized routes LAST
+router.get('/name/:name', getArticleByName);
+router.get('/:id', getArticleById);
 
-router.post('/', (req, res) => {
-  res.json({ message: 'Create article - placeholder' });
-});
+// POST/PUT/DELETE routes
+router.post('/', addArticle);
+router.put('/:id', updateArticle);
+router.delete('/:id', deleteArticle);
+router.post('/increment-views/:name', incrementArticleViews);
 
 module.exports = router;
