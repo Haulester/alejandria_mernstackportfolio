@@ -20,7 +20,7 @@ import {
   CircularProgress
 } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { fetchUsers, createUser, updateUser, deleteUser } from "../../services/userService";
+import { fetchUsers, createUser, updateUser, deleteUser } from "../../services/UserService";
 
 const ROLES = {
   ADMIN: 'admin',
