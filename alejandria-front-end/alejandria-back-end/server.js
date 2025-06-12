@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const connectDB = require('./config/db');
 
 const app = express();
@@ -23,7 +24,7 @@ app.get('/api/test', (req, res) => {
   res.json({ message: 'Server working!', timestamp: new Date() });
 });
 
-// Add routes one by one
+// Add routes
 try {
   const userRoutes = require('./routes/userRoutes');
   app.use('/api/users', userRoutes);
@@ -38,6 +39,25 @@ try {
   console.log('✅ Article routes loaded');
 } catch (error) {
   console.error('❌ Error loading article routes:', error.message);
+}
+
+// IMPORTANT: Serve static files and handle React routing
+if (process.env.NODE_ENV === "production") {
+  const root = path.join(__dirname, '../dist');
+  
+  // Serve static files
+  app.use(express.static(root));
+  
+  // Handle React routing - serve index.html for all non-API routes
+  app.get('*', (req, res) => {
+    // Don't serve index.html for API routes
+    if (req.url.startsWith('/api/')) {
+      return res.status(404).json({ message: 'API endpoint not found' });
+    }
+    
+    // Serve React app for all other routes
+    res.sendFile(path.join(root, 'index.html'));
+  });
 }
 
 // Error handling
