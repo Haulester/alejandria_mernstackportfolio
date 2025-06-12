@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from '../components/Button';
 import { useNavigate, Link } from 'react-router-dom';
-import { loginUser } from '../../services/userService';
+import { loginUser } from '../services/UserService'; // ← Fixed this line
 import '../styles/Login.css';
 
 function LoginPage() {
