@@ -1,64 +1,22 @@
 const express = require('express');
-const {
-  getAllArticles,
-  getPublishedArticles,
-  getArticleById,
-  getArticleByName,
-  addArticle,
-  updateArticle,
-  deleteArticle,
-  incrementArticleViews,
-  searchArticles
-} = require('../controllers/articleController');
-
 const router = express.Router();
 
-// Put specific routes BEFORE parameterized routes
-router.get('/', getAllArticles);
-router.get('/published', getPublishedArticles);
-router.get('/search', searchArticles);
-
-// Debug route
-router.get('/debug-published', async (req, res) => {
-  try {
-    const Article = require('../models/Article');
-    
-    console.log('🔍 Debug route called');
-    
-    const all = await Article.find();
-    console.log(`📊 Total articles in DB: ${all.length}`);
-    
-    const published = await Article.find({ status: 'Published' });
-    console.log(`✅ Published articles found: ${published.length}`);
-    
-    all.forEach(article => {
-      console.log(`- "${article.title}": status = "${article.status}" (type: ${typeof article.status})`);
-    });
-    
-    res.json({
-      total: all.length,
-      published: published.length,
-      allStatuses: all.map(a => ({ 
-        title: a.title, 
-        status: a.status, 
-        statusType: typeof a.status,
-        statusLength: a.status ? a.status.length : 'null'
-      })),
-      publishedTitles: published.map(a => a.title)
-    });
-  } catch (error) {
-    console.error('❌ Debug route error:', error);
-    res.json({ error: error.message });
-  }
+// Simple test route
+router.get('/test', (req, res) => {
+  res.json({ message: 'Article routes working!' });
 });
 
-// Put parameterized routes AFTER specific routes
-router.get('/name/:name', getArticleByName);
-router.get('/:id', getArticleById);
+// Basic routes without complex patterns
+router.get('/', (req, res) => {
+  res.json({ message: 'Get all articles - placeholder' });
+});
 
-router.post('/', addArticle);
-router.put('/:id', updateArticle);
-router.delete('/:id', deleteArticle);
-router.post('/increment-views/:name', incrementArticleViews);
+router.get('/published', (req, res) => {
+  res.json({ message: 'Get published articles - placeholder' });
+});
+
+router.post('/', (req, res) => {
+  res.json({ message: 'Create article - placeholder' });
+});
 
 module.exports = router;
