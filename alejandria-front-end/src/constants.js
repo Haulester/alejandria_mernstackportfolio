@@ -1,5 +1,5 @@
 const constants = {
-  HOST: 'http://localhost:5000/api'
+  HOST: 'https://alejandria-mernstackportfolio.onrender.com'
 };
 
 export default constants;
