@@ -20,11 +20,11 @@ app.use(express.json());
 app.use(jsonParser);
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Updated CORS for production
+// CORS configuration
 app.use(cors({
   origin: [
     'http://localhost:5175',
-    'https://alejandria-frontend3.onrender.com' // Your frontend URL
+    'https://alejandria-frontend3.onrender.com'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
@@ -35,11 +35,12 @@ app.use(cors({
 app.use('/api/users', userRoutes);
 app.use('/api/articles', articleRoutes);
 
-// Serve Frontend (for production build) - UPDATED PATH
+// Serve Frontend (for production build)
 if (process.env.NODE_ENV === "production") {
-  const root = path.join(__dirname, '../dist'); // Fixed path for your structure
+  const root = path.join(__dirname, '../dist');
   app.use(express.static(root));
-  app.get('*', (req, res) => { // Fixed from app.all to app.get
+  // FIXED: Remove the problematic route
+  app.get('*', (req, res) => {
     res.sendFile(path.join(root, 'index.html'));
   });
 }
