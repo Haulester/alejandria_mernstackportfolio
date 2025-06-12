@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Button from '../components/Button';
-import { createUser } from '../services/userService'; 
+import { createUser } from '../services/UserService'; 
 import '../styles/Regis.css'; 
 
 function RegisterPage() {
