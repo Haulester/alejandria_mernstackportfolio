@@ -1,0 +1,51 @@
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 2rem;  /* Same as navbar */
+    text-align: center;
+    width: 100%;
+    margin-top: 3rem;
+  }
+  
+  footer .footer-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  footer h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  footer p {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+  }
+  
+  footer .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  footer .footer-links a {
+    color: #61dafb;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  footer .footer-links a:hover {
+    color: #21a1f1;
+  }
+  
+  footer .footer-copyright {
+    font-size: 0.875rem;
+    color: #bbb;
+  }
+  

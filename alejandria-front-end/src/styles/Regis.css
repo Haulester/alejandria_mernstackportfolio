@@ -1,0 +1,281 @@
+/* Shared container styling */
+.register-page-container,
+.login-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Shared form box styling */
+.register-page,
+.login-page {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px; /* Increased for registration form */
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Keep login page smaller */
+.login-page {
+  max-width: 350px;
+}
+
+.register-page h2,
+.login-page h2 {
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.register-page .form-group,
+.login-page .form-group {
+  margin-bottom: 1.2rem;
+}
+
+/* Form row for side-by-side fields (registration only) */
+.form-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.register-page label,
+.login-page label {
+  font-size: 14px;
+  color: #555;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Input styling for all input types */
+.register-page input[type="text"],
+.register-page input[type="email"],
+.register-page input[type="password"],
+.register-page input[type="number"],
+.register-page input[type="tel"],
+.register-page select,
+.register-page textarea,
+.login-page input[type="email"],
+.login-page input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 6px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.register-page input:focus,
+.register-page select:focus,
+.register-page textarea:focus,
+.login-page input[type="email"]:focus,
+.login-page input[type="password"]:focus {
+  outline: none;
+  border-color: #0056b3;
+  background-color: #fff;
+}
+
+/* Select dropdown styling */
+.register-page select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23666' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+  padding-right: 40px;
+}
+
+/* Textarea styling */
+.register-page textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+.register-page button,
+.login-page button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.register-page button:hover,
+.login-page button:hover {
+  background-color: #004494;
+}
+
+.register-page button:active,
+.login-page button:active {
+  background-color: #003a7d;
+}
+
+.register-page button:disabled,
+.login-page button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Error and success message styling */
+.error-message,
+.success-message {
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.error-message {
+  background-color: #fee;
+  color: #c53030;
+  border: 1px solid #feb2b2;
+}
+
+.success-message {
+  background-color: #f0fff4;
+  color: #38a169;
+  border: 1px solid #9ae6b4;
+}
+
+/* Link styling */
+.register-link-container,
+.login-link-container {
+  text-align: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e1e5e9;
+}
+
+.register-link-container p,
+.login-link-container p {
+  color: #666;
+  margin: 0;
+  font-size: 14px;
+}
+
+.register-link,
+.login-link {
+  color: #0056b3;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.register-link:hover,
+.login-link:hover {
+  color: #004494;
+  text-decoration: underline;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .register-page-container,
+  .login-page-container {
+    padding: 0.5rem;
+    min-height: 100vh;
+  }
+
+  .register-page,
+  .login-page {
+    padding: 1.5rem;
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .register-page h2,
+  .login-page h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .form-row .form-group {
+    margin-bottom: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-page,
+  .login-page {
+    padding: 1.2rem;
+    width: 98%;
+  }
+
+  .register-page h2,
+  .login-page h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .register-page input,
+  .register-page select,
+  .register-page textarea,
+  .register-page button,
+  .login-page input,
+  .login-page button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .register-page .form-group,
+  .login-page .form-group {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Very small screens or short height */
+@media (max-height: 600px) {
+  .register-page-container,
+  .login-page-container {
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+
+  .register-page,
+  .login-page {
+    margin: 0.5rem 0;
+    max-height: none;
+  }
+
+  .register-page h2,
+  .login-page h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .register-page .form-group,
+  .login-page .form-group {
+    margin-bottom: 0.8rem;
+  }
+}

@@ -1,0 +1,104 @@
+.page-container {
+  width: 100%;              /* Full width */
+  max-width: 1200px;        /* Maximum width */
+  margin: auto;             /* Center the container */
+  padding: 2rem;
+  color: #333;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* Three equal columns */
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.article-card {
+  background-color: #fff;      /* White background for each article */
+  border: 1px solid #ddd;      /* Light border around each card */
+  border-radius: 10px;         /* Rounded corners */
+  padding: 1.5rem;             /* Padding inside the card */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);  /* Slight lift effect on hover */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);  /* Stronger shadow on hover */
+}
+
+.article-card img {
+  width: 100%;
+  border-radius: 8px;   /* Rounded corners for the image */
+  margin-bottom: 1.2rem;
+  object-fit: cover;    /* Ensures the image fits nicely */
+  height: 200px;        /* Fixed height for images to keep them uniform */
+}
+
+.article-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.article-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.article-card a {
+  text-decoration: none;
+  color: #61dafb;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.article-card a:hover {
+  color: #21a1f1; /* Darker shade of blue on hover */
+}
+
+@media (max-width: 1024px) {
+  .articles-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .articles-grid {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
+}
+
+
+.page-banner {
+  width: 100%;                 /* Full width */
+  max-width: 800px;            /* Limit the maximum size of the image */
+  height: auto;                /* Maintain aspect ratio */
+  margin: 0 auto;              /* Center the image horizontally */
+  display: block;              /* Make image a block-level element to center it */
+  border-radius: 10px;         /* Optional: Add rounded corners */
+  margin-bottom: 2rem;         /* Space below the image */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for effects */
+}
+
+.page-banner:hover {
+  transform: scale(1.05);      /* Slightly zoom in */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);  /* Add shadow effect on hover */
+  opacity: 0.9;                /* Optional: slightly reduce opacity */
+}
+
+
+
+
+
+
+
